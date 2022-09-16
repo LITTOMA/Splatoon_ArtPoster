@@ -23,6 +23,14 @@ LUFA_PATH    = ../LUFA/LUFA
 CC_FLAGS     = -DUSE_LUFA_CONFIG_HEADER -IConfig/
 LD_FLAGS     =
 
+GAMEVER      = 2
+
+ifeq ($(GAMEVER), 2)
+	CC_FLAGS += -DSPLATOON2=1
+else
+	CC_FLAGS += -DSPLATOON3=1
+endif
+
 # Default target
 all:
 

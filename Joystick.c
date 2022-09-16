@@ -210,11 +210,25 @@ void GetNextReport(USB_JoystickReport_Input_t* const ReportData) {
 				ReportData->LX = STICK_MIN;
 				ReportData->LY = STICK_MIN;
 			}
+
+#if SPLATOON2
 			if (report_count == 75 || report_count == 150)
 			{
 				// Clear the screen
 				ReportData->Button |= SWITCH_MINUS;
 			}
+#elif SPLATOON3
+			if (report_count == 75 || report_count == 150)
+			{
+				// Clear the screen
+				ReportData->Button |= SWITCH_LCLICK;
+			}
+			if (report_count == 175 || report_count == 200 || report_count == 225)
+			{
+				// Change pen size
+				ReportData->Button |= SWITCH_L;
+			}
+#endif
 			report_count++;
 			break;
 		case STOP_X:
